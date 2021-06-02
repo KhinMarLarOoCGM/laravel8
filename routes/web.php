@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CompanyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('companies', CompanyController::class);
+Route::get('/', [CompanyController::class, 'index']);
+Route::post('/store', [CompanyController::class, 'store']);
+Route::get('/detail/{id}', [CompanyController::class, 'show']);
+Route::get('/edit/{id}', [CompanyController::class, 'edit']);
+Route::get('/search', [CompanyController::class, 'search']);
+Route::get('/destroy/{id}',  [CompanyController::class, 'destroy']);
