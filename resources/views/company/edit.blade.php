@@ -17,9 +17,9 @@
  @method('PUT')
 <div class="form-group row">
     <input type="hidden" class="form-control @error('id') is-invalid @enderror" id="id" name="id" placeholder="id" value="{{ isset($company->id) ? $company->id : '' }}">
-    <label for="companyname" class="col-md-1 col-form-label text-md-right">企業名</label>
+    <label for="name" class="col-md-1 col-form-label text-md-right">企業名</label>
     <div class="col-md-3">
-        <input name="companyname" id="companyname" type="text" class="form-control @error('companyname') is-invalid @enderror" companyname="companyname" value="{{ isset($company->name) ? $company->name : old('company->name') }}" required placeholder="" autofocus>
+        <input name="name" id="name" type="text" class="form-control @error('name') is-invalid @enderror" companyname="name" value="{{ isset($company->name) ? $company->name : old('company->name') }}" required placeholder="" autofocus>
     </div>
 </div>
 <br><br>

@@ -36,22 +36,22 @@
 <div class="form-group row">
     <label for="name" class="col-md-1 col-form-label text-md-right">企業名</label>
     <div class="col-md-1">
-        <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ isset($name) ? $name : old('name') }}" placeholder="" autofocus>
+        <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ isset($request->name) ? $request->name : old('name') }}" placeholder="" autofocus>
     </div>
     <label for="name" class="col-md-1 col-form-label text-md-right">電話番号</label>
     <div class="col-md-1">
-        <input id="name" name="tel" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ isset($name) ? $name : old('name') }}" placeholder="" autofocus>
+        <input id="name" name="tel" type="text" class="form-control @error('tel') is-invalid @enderror" name="name" value="{{ isset($request->tel) ? $request->tel : old('tel') }}" placeholder="" autofocus>
     </div>
 </div>
 <br><br>
 <div class="form-group row">
     <label for="name" class="col-md-1 col-form-label text-md-right">代表者名</label>
     <div class="col-md-1">
-        <input id="name" name="repname" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ isset($name) ? $name : old('name') }}" placeholder="" autofocus>
+        <input id="name" name="repname" type="text" class="form-control @error('repname') is-invalid @enderror" name="name" value="{{ isset($request->repname) ? $request->repname : old('repname') }}" placeholder="" autofocus>
     </div>
     <label for="name" class="col-md-1 col-form-label text-md-right">業種</label>
     <div class="col-md-1">
-        <input id="name" name="industry" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ isset($name) ? $name : old('name') }}" placeholder="" autofocus>
+        <input id="name" name="industry" type="text" class="form-control @error('industry') is-invalid @enderror" name="name" value="{{ isset($request->industry) ? $request->industry : old('industry') }}" placeholder="" autofocus>
     </div>
     <div class="col-md-1">
         <button type="submit" class="btn btn-success">検索</button>
@@ -61,11 +61,11 @@
 <div class="form-group row">
     <label for="name" class="col-md-1 col-form-label text-md-right">請求先名</label>
     <div class="col-md-1">
-        <input id="name" name="bill_name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ isset($name) ? $name : old('name') }}" placeholder="" autofocus>
+        <input id="name" name="bill_name" type="text" class="form-control @error('bill_name') is-invalid @enderror" name="name" value="{{ isset($request->bill_name) ? $request->bill_name : old('bill_name') }}" placeholder="" autofocus>
     </div>
     <label for="name" class="col-md-1 col-form-label text-md-right">請求先名</label>
     <div class="col-md-1">
-        <input id="name" name="bill_tel" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ isset($name) ? $name : old('name') }}" placeholder="" autofocus>
+        <input id="name" name="bill_tel" type="text" class="form-control @error('bill_tel') is-invalid @enderror" name="name" value="{{ isset($request->bill_tel) ? $request->bill_tel : old('bill_tel') }}" placeholder="" autofocus>
     </div>
 </div>
 </form>
@@ -127,21 +127,9 @@
             <td>{{ $value->tel }}</td>
             <td><a class="btn btn-success" href="/detail/{{$value->id}}"> 詳細</a> 
                 <a class="btn btn-success" href="/edit/{{$value->id}}"> 編集</a>
-
                 <button type="button"  class="btn btn-primary" data-id="{{ $value->id }}" data-toggle="modal" id="deleteModal" data-target="#exampleModal">
-                    Delete
+                    削除
                 </button>
-
-                <!-- <a class="btn btn-outline-danger" data-id="{{ $value->id }}" id="deleteUserModal" data-toggle="modal" data-target="#exampleModalCenter">Delete</a>
-
-            <form action="{{ route('companies.destroy',$value->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger btn-sm"
-                        onclick="return confirm('Are you sure you want to delete this post')">
-                    Delete
-                </button>
-            </form> -->
         </td>
         </tr>
         @endforeach

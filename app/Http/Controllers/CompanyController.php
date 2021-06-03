@@ -126,7 +126,7 @@ class CompanyController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }else{
             $company = Company::find($request->id);
-            $company->name =   $request->companyname;
+            $company->name =   $request->name;
             $company->postcode = $request->postalcode;
             $company->address = $request->address;
             $company->tel = $request->tel;
@@ -175,8 +175,8 @@ class CompanyController extends Controller
                     ->when($request->tel, function ($query) use ($request) {
                         $query->where('tel', 'like', "%{$request->tel}%");
                     })
-                    ->when($request->tel, function ($query) use ($request) {
-                        $query->where('tel', 'like', "%{$request->tel}%");
+                    ->when($request->industry, function ($query) use ($request) {
+                        $query->where('industry', 'like', "%{$request->industry}%");
                     })
                     ->when($request->repname, function ($query) use ($request) {
                         $query->where('repname', 'like', "%{$request->repname}%");
@@ -188,10 +188,11 @@ class CompanyController extends Controller
                         $query->where('bill_tel', 'like', "%{$request->bill_tel}%");
                     })->paginate(5);
 
+
         if (count($data) == 0) {
              return view('company.index',compact('data'))->withErrors(['該当情報が存在しません。']);
         }else{
-            return view('company.index',compact('data'))->with('i', (request()->input('page', 1) - 1) * 25);
+            return view('company.index',compact('data','request'))->with('i', (request()->input('page', 1) - 1) * 25);
         }
     }
 }
